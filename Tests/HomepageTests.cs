@@ -19,18 +19,42 @@ namespace Tests
         }
 
         [Test]
-        public void SearchForFlightsToRigaTest()
+        public void TodaysDateTest() 
         {
-            Homepage.ClickOnTheSelectedFieldToEnterAirport();
-            Homepage.ClickOnEmptyFieldToEnter();
-            Homepage.EnterRixAirportToTheSearch("Rix");
-            Homepage.ClickToConfirmRixAirport();
+            DateTime today = DateTime.Today;
+
+            string customFormatDate = "yyyy-MM-dd";
+            string formattedDate = today.ToString(customFormatDate);
+
+            string actualDate = Homepage.GetValueOfDate();
+
+            Assert.AreEqual(formattedDate, actualDate);
         }
 
-        //[TearDown]
-        //public void Teardown()
-        //{
-        //    Driver.CloseDriver();
-        //}
+        [Test]
+        public void SearchForFlightsFromSZGTest()
+        {
+            string expectedValue = "Zalcburgas SZG";
+
+            Homepage.ClickOnTheSelectedFieldToEnterAirport();
+            Homepage.ClickOnEmptyFieldToEnter();
+            Homepage.EnterAirportToTheSearch("szg");
+            Homepage.ClickToConfirmAirport();
+
+            Homepage.ClickSearchForFlights();
+
+            List<string> actualValue = Homepage.GetFlighSearchAnswers();
+
+            foreach (string value in actualValue)
+            {
+                Assert.AreEqual(expectedValue, value);
+            }
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            Driver.CloseDriver();
+        }
     }
 }
