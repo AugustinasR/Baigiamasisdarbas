@@ -32,6 +32,19 @@ namespace Tests
         }
 
         [Test]
+        public void DateToTest()
+        {
+            DateTime today = DateTime.Today;
+            DateTime oneMonthFromToday = today.AddMonths(1).AddDays(-1);
+            string customFormatDate = "yyyy-MM-dd";
+            string expectedResult = oneMonthFromToday.ToString(customFormatDate);
+
+            string actualDateTo = Homepage.ValueToDate();
+
+            Assert.AreEqual(expectedResult, actualDateTo);
+        }
+
+        [Test]
         public void SearchForFlightsFromSZGTest()
         {
             string expectedValue = "Zalcburgas SZG";

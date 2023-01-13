@@ -91,5 +91,10 @@ namespace Framework.Pages
         {
             return Common.GetAttributeValue(dateLocator, "value");
         }
+
+        public static string ValueToDate()
+        {
+            return Common.GetAttributeValue(dateToLocator, "value");
+        }
     }
 }
