@@ -18,6 +18,13 @@ namespace Framework.Pages
         public static string searchAnswersLocator = "//*[@id=\"nav-tabContent\"]/div[1]/div/table/tbody/tr/td[3]/span[1]";
         public static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
         public static string dateLocator = "//*[@id='flights-widget-date-from']";
+        public static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
+        public static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
+        public static string hertzButton = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
+        public static string directionsLocator = "//span[@class='btn btn-primary']";
+        public static string izolationLocator = "//*[@id=\"isolate-in\"]/option[2]";
+        public static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
+        public static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
 
         public static void Open()
         {
@@ -95,6 +102,41 @@ namespace Framework.Pages
         public static string ValueToDate()
         {
             return Common.GetAttributeValue(dateToLocator, "value");
+        }
+
+        public static void ClickServicesButton()
+        {
+            Common.ClickElement(airportServicesLocator);
+        }
+
+        public static void ClickCarRentalButton()
+        {
+            Common.ClickElement(carRentalButtonLocator);
+        }
+
+        public static void ClickHertzButton()
+        {
+            Common.ClickElement(hertzButton);
+        }
+
+        public static void ClickDirectionsButton()
+        {
+            Common.ClickElement(directionsLocator);
+        }
+
+        public static void SelectSelfIzolation()
+        {
+            Common.ClickElement(izolationLocator);
+        }
+
+        public static void ClickFilterButton()
+        {
+            Common.ClickElement(filterButtonLocator);
+        }
+
+        public static string AnswerMessage()
+        {
+          return  Common.GetElementText(answerLocator);
         }
     }
 }

@@ -64,6 +64,32 @@ namespace Tests
             }
         }
 
+        //[Test]
+        //public void CarRentalTest()
+        //{
+        //    string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
+
+        //    Homepage.ClickServicesButton();
+        //    Homepage.ClickCarRentalButton();
+        //    Homepage.ClickHertzButton();
+
+        //    string actualurlValue = 
+        //}
+
+        [Test]
+        public void CovidRestrictionsTest()
+        {
+            string expectedAnswer = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
+
+            Homepage.ClickDirectionsButton();
+            Homepage.SelectSelfIzolation();
+            Homepage.ClickFilterButton();
+
+            string actualAnswer = Homepage.AnswerMessage();
+
+            Assert.AreEqual(expectedAnswer, actualAnswer);
+        }
+
         [TearDown]
         public void Teardown()
         {

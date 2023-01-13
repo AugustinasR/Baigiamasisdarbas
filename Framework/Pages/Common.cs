@@ -105,5 +105,8 @@ namespace Framework.Pages
         {
             return GetElement(locator).GetAttribute(attributeName);
         }
+
+        
     }
+
 }
