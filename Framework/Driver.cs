@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Framework
 {
@@ -14,12 +9,14 @@ namespace Framework
 
         public static IWebDriver GetDriver()
         {
-        return driver;
+            return driver;
         }
 
         public static void CreateDriver()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("window-size=1920,1080");
+            driver = new ChromeDriver(options);
         }
 
         public static void CloseDriver()
