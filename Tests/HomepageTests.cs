@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,17 +65,17 @@ namespace Tests
             }
         }
 
-        //[Test]
-        //public void CarRentalTest()
-        //{
-        //    string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
+        [Test]
+        public void CarRentalTest()
+        {
+            string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
 
-        //    Homepage.ClickServicesButton();
-        //    Homepage.ClickCarRentalButton();
-        //    Homepage.ClickHertzButton();
+            Homepage.ClickServicesButton();
+            Homepage.ClickCarRentalButton();
+            Homepage.ClickHertzButton();
 
-        //    string actualurlValue = 
-        //}
+            string actualurlValue = Client.Download
+        }
 
         [Test]
         public void CovidRestrictionsTest()
