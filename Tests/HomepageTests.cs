@@ -1,6 +1,8 @@
 ﻿using Framework;
 using Framework.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +76,11 @@ namespace Tests
             Homepage.ClickCarRentalButton();
             Homepage.ClickHertzButton();
 
-            string actualurlValue = Client.Download
+            bool url = Driver.GetDriver().Url;
+
+            bool actualValue = ExpectedConditions.UrlMatches(url);
+
+            Assert.AreEqual(expectedurlValue, actualValue);
         }
 
         [Test]
