@@ -28,6 +28,8 @@
 #### 1 žingsnis - paspaudžiame kairįjį pelės klavišą ant puslapio mygtuko "Paslaugos oro uoste".
 #### 2 žingnis - paspaudžiame kairįjį pelės klavišą ant puslapio mygtuko "Automobilių nuoma".
 #### 3 žingnis - paspaudžiame kairįjį pelės klavišą ant Hertz logotipo.
+#### 4 žingsnis - nuskaitome atidarytą puslapio nuorodą.
+#### 5 žingsnis - palyginame ar "expectedurlValue" sutampa su "actualUrl".
 
 ### 5 atvejis - patikriname ar veikia krypčių filtras naudojanits COVID-19 apribojimų filtro funkcija.
 #### 1 žingnis - pasirinenkame "expectedAnswer" atsakymą, kurio tikimės iš puslapio.
