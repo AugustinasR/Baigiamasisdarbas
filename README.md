@@ -14,12 +14,12 @@
 #### 4 žingsnis - nuskaitoma tikroji data, kuri rodoma oro uosto puslapyje "actualDateTo".
 #### 5 žinggnis - palyginama ar "oneMonthFromToday" yra ta pati kaip "actualDateTo".
 
-### 3 atvejis - tedtuojama ar veikia skrydžių paieškos puslapis ieškant Zalcburgo krypties.
+### 3 atvejis - testuojama ar veikia skrydžių paieškos puslapis ieškant pasirinktos krypties.
 #### 1 žingsnis - paieškos atsakymas, kurio tikimasi - "expectedValue".
 #### 2 žingnis - pelės kursoriumi paspaudžiame kairįjį mygtuką ant oro uosto laukelio paieškoje.
 #### 3 žingsnis - palės kursoriumi paspaudžiame ant atiradusio tuščio teksto įvedimo laukelio kairįjį mygtuką.
-#### 4 žingsnis - suvedame teksta "szg" - Zalcburgo oro uosto kodą.
-#### 5 žingsnis - paspaudžiame kairįjį pelės klavišą ant žemiau suvedimo laukelio atsiradusio sąrašo, kurio pirmoji reikšmė - Zalcburgas.
+#### 4 žingsnis - suvedame suvedame ieškomo oro uosto kodą.
+#### 5 žingsnis - paspaudžiame kairįjį pelės klavišą ant žemiau suvedimo laukelio atsiradusio sąrašo pirmosios reikšmės.
 #### 6 žingsnis - paspaudžiame pelės kairįjį mygtuką ant puslapio mygtuko "ieškoti skrydžio".
 #### 7 žingnis - nuskaitydami pateiktų atsakymų sąrašą puslapyje gauname "actualValue".
 #### 8 žingsnis - palyginame ar kiekviename iš gauto sarašo atsakymo elementų gauname "expectedValue" reikšmę.
