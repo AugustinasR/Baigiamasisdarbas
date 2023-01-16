@@ -48,13 +48,13 @@ namespace Tests
         }
 
         [Test]
-        public void SearchForFlightsFromSZGTest()
+        public void SearchForFlightsFromTest()
         {
-            string expectedValue = "Zalcburgas SZG";
+            string expectedValue = "Ryga RIX";
 
             Homepage.ClickOnTheSelectedFieldToEnterAirport();
             Homepage.ClickOnEmptyFieldToEnter();
-            Homepage.EnterAirportToTheSearch("szg");
+            Homepage.EnterAirportToTheSearch("rix");
             Homepage.ClickToConfirmAirport();
 
             Homepage.ClickSearchForFlights();
@@ -74,13 +74,11 @@ namespace Tests
 
             Homepage.ClickServicesButton();
             Homepage.ClickCarRentalButton();
-            Homepage.ClickHertzButton();
+            Homepage.ClickOnHertzButton();
 
-            bool url = Driver.GetDriver().Url;
+            string actualUrl = Driver.GetDriver().Url;
 
-            bool actualValue = ExpectedConditions.UrlMatches(url);
-
-            Assert.AreEqual(expectedurlValue, actualValue);
+            Assert.AreEqual(expectedurlValue, actualUrl);
         }
 
         [Test]
@@ -89,7 +87,7 @@ namespace Tests
             string expectedAnswer = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
 
             Homepage.ClickDirectionsButton();
-            Homepage.SelectSelfIzolation();
+            Homepage.SelectDropDownListIfIzolationIsRequired();
             Homepage.ClickFilterButton();
 
             string actualAnswer = Homepage.AnswerMessage();

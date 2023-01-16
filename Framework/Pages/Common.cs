@@ -78,27 +78,15 @@ namespace Framework.Pages
         {
             List<string> destinations = new List<string>();
 
-            int currentAttempt = 1;
-            int maxAttempts = 5;
-            while (currentAttempt < maxAttempts)
+            List<IWebElement> elements = GetElements(locator);
+
+            foreach (IWebElement element in elements)
             {
-                try
-                {
-                    List<IWebElement> elements = GetElements(locator);
-
-                    foreach (IWebElement element in elements)
-                    {
-                        destinations.Add(element.Text);
-                    }
-
-                    return destinations;
-                }
-                catch(StaleElementReferenceException)
-                {
-                    currentAttempt++;
-                }
+                destinations.Add(element.Text);
             }
+
             return destinations;
+                                   
         }
 
         internal static string GetAttributeValue(string locator, string attributeName)
@@ -106,7 +94,39 @@ namespace Framework.Pages
             return GetElement(locator).GetAttribute(attributeName);
         }
 
-        
+        internal static List<string> GetWindowHandles()
+        {
+            return Driver.GetDriver().WindowHandles.ToList();
+        }
+
+        internal static string GetCurrentWindowHandle()
+        {
+            return Driver.GetDriver().CurrentWindowHandle;
+        }
+
+        internal static void SwitchToNewUrlFromParentWindowByHandle(string parentWindowHandle)
+        {
+            List<string> handles = GetWindowHandles();
+            foreach (string handle in handles)
+            {
+                if (handle != parentWindowHandle)
+                {
+                    SwitchToWindowByHandle(handle);
+                    break;
+                }
+            }
+        }
+
+        private static void SwitchToWindowByHandle(string handle)
+        {
+            Driver.GetDriver().SwitchTo().Window(handle);
+        }
+
+        internal static void WaitForElementToBeInvisible(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
+        }
     }
 
 }

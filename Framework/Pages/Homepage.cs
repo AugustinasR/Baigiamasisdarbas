@@ -15,7 +15,7 @@ namespace Framework.Pages
         public static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
         public static string dateFromLocator = "//*[@id='flights-widget-date-from']";
         public static string dateToLocator = "//*[@id='flights-widget-date-to']";
-        public static string searchAnswersLocator = "//*[@id=\"nav-tabContent\"]/div[1]/div/table/tbody/tr/td[3]/span[1]";
+        public static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
         public static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
         public static string dateLocator = "//*[@id='flights-widget-date-from']";
         public static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
@@ -91,6 +91,7 @@ namespace Framework.Pages
 
         public static List<string> GetFlighSearchAnswers()
         {
+            Common.WaitForElementToBeInvisible("//*[@class='loading-spinner']");
             return Common.GetListElementText(searchAnswersLocator);
         }
 
@@ -124,7 +125,7 @@ namespace Framework.Pages
             Common.ClickElement(directionsLocator);
         }
 
-        public static void SelectSelfIzolation()
+        public static void SelectDropDownListIfIzolationIsRequired()
         {
             Common.ClickElement(izolationLocator);
         }
@@ -137,6 +138,21 @@ namespace Framework.Pages
         public static string AnswerMessage()
         {
           return  Common.GetElementText(answerLocator);
+        }
+
+        public static void ClickOnHertzButton()
+        {
+            
+            Common.ClickElement(hertzButton);
+
+            string currentHandle = Common.GetCurrentWindowHandle();
+            Common.SwitchToNewUrlFromParentWindowByHandle(currentHandle);
+            
+        }
+
+        public static string GetActualUrl()
+        {
+            throw new NotImplementedException();
         }
     }
 }
