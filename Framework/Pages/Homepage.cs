@@ -8,10 +8,8 @@ namespace Framework.Pages
         private static string emptyFieldLocator = "//*[contains(@class,'select2-search__')]";
         private static string confirmRIXLocator = "//li[contains(@class,'select2-results__option')]";
         private static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
-        private static string dateFromLocator = "//*[@id='flights-widget-date-from']";
         private static string dateToLocator = "//*[@id='flights-widget-date-to']";
         private static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
-        private static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
         private static string dateLocator = "//*[@id='flights-widget-date-from']";
         private static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
         private static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
