@@ -16,7 +16,7 @@ namespace Tests
         }
 
         [Test]
-        public void TodaysDateTest() 
+        public void TodaysDate() 
         {
             DateTime today = DateTime.Today;
 
@@ -29,7 +29,7 @@ namespace Tests
         }
 
         [Test]
-        public void DateToTest()
+        public void DateTo()
         {
             DateTime today = DateTime.Today;
             DateTime oneMonthFromToday = today.AddMonths(1).AddDays(-1);
@@ -42,7 +42,7 @@ namespace Tests
         }
 
         [Test]
-        public void SearchForFlightsFromTest()
+        public void SearchForFlightsFrom()
         {
             string expectedValue = "Ryga RIX";
 
@@ -62,7 +62,7 @@ namespace Tests
         }
 
         [Test]
-        public void CarRentalTest()
+        public void CarRental()
         {
             string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
 
@@ -76,7 +76,7 @@ namespace Tests
         }
 
         [Test]
-        public void CovidRestrictionsTest()
+        public void CovidRestrictions()
         {
             string expectedAnswer = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
 
