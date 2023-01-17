@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 
 namespace Framework.Pages
 {
     public class Homepage
     {
-        public static string enterAirportNameLocator = "//*[@id='select2-arrival-select-container']";
-        public static string emptyFieldLocator = "//*[contains(@class,'select2-search__')]";
-        public static string confirmRIXLocator = "//li[contains(@class,'select2-results__option')]";
-        public static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
-        public static string dateFromLocator = "//*[@id='flights-widget-date-from']";
-        public static string dateToLocator = "//*[@id='flights-widget-date-to']";
-        public static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
-        public static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
-        public static string dateLocator = "//*[@id='flights-widget-date-from']";
-        public static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
-        public static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
-        public static string hertzButton = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
-        public static string directionsLocator = "//span[@class='btn btn-primary']";
-        public static string izolationLocator = "//*[@id=\"isolate-in\"]/option[2]";
-        public static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
-        public static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
+        private static string enterAirportNameLocator = "//*[@id='select2-arrival-select-container']";
+        private static string emptyFieldLocator = "//*[contains(@class,'select2-search__')]";
+        private static string confirmRIXLocator = "//li[contains(@class,'select2-results__option')]";
+        private static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
+        private static string inputDateToLocator = "//*[@id='flights-widget-date-to']";
+        private static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
+        private static string inputDateFromLocator = "//*[@id='flights-widget-date-from']";
+        private static string buttonAirportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
+        private static string buttonCarRentalButtonLocator = "//a[@title='Automobilių nuoma']";
+        private static string buttonHertzLocator = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
+        private static string buttonDirectionsLocator = "//span[@class='btn btn-primary']";
+        private static string optionIsolationYes = "//*[@id=\"isolate-in\"]/option[2]";
+        private static string buttonFilterLocator = "//*[@id='directions-filters']/form/div[8]/input";
+        private static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
+        private static string cookiesDeclineLocator = "//*[@id='CybotCookiebotDialogBodyButtonDecline']";
+        private static string addPopupCloseLocator = "//*[@class='close-popup']";
+        private static string loadingSpinnerLocator = "//*[@class='loading-spinner']";
 
         public static void Open()
         {
             Driver.OpenPage("https://www.vilnius-airport.lt/");
-            Common.WaitAndClick("//*[@id='CybotCookiebotDialogBodyButtonDecline']");
-            Common.WaitAndClick("//*[@class='close-popup']");
-            //Common.WaitForElementToBeClickable("//*[@class='close-popup']");
+            Common.WaitAndClick(cookiesDeclineLocator);
+            Common.WaitAndClick(addPopupCloseLocator);
         }
 
         public static void ClickOnTheSelectedFieldToEnterAirport()
@@ -44,11 +39,6 @@ namespace Framework.Pages
             Common.SendKeysToElement(emptyFieldLocator, name);
         }
 
-        public static void ClickOnEmptyFieldToEnter()
-        {
-            Common.ClickElement(emptyFieldLocator);
-        }
-
         public static void ClickToConfirmAirport()
         {
             Common.ClickElement(confirmRIXLocator);
@@ -59,80 +49,45 @@ namespace Framework.Pages
             Common.ClickElement(searchForFlightsLocator);
         }
 
-        public static void ClickDateFrom()
-        {
-            Common.ClickElement(dateFromLocator);
-        }
-
-        public static void EnterDateFrom(string dateFrom)
-        {
-            Common.SendKeysToElement(dateFromLocator, dateFrom);
-        }
-
-        public static void ClickDateTo()
-        {
-            Common.ClickElement(dateToLocator);
-        }
-
-        public static void EnterDateTo(string dateTo)
-        {
-            Common.SendKeysToElement(dateToLocator, dateTo);
-        }
-
-        public static void ClearDateFrom()
-        {
-           Common.ClearInputElement(dateFromLocator);
-        }
-
-        public static void ClearDateTo()
-        {
-            Common.ClearInputElement(dateToLocator); 
-        }
-
         public static List<string> GetFlighSearchAnswers()
         {
-            Common.WaitForElementToBeInvisible("//*[@class='loading-spinner']");
-            return Common.GetListElementText(searchAnswersLocator);
+            Common.WaitForElementToBeInvisible(loadingSpinnerLocator);
+            return Common.GetElementTextList(searchAnswersLocator);
         }
 
-        public static string GetValueOfDate()
+        public static string GetValueFromDate()
         {
-            return Common.GetAttributeValue(dateLocator, "value");
+            return Common.GetAttributeValue(inputDateFromLocator, "value");
         }
 
-        public static string ValueToDate()
+        public static string GetValueToDate()
         {
-            return Common.GetAttributeValue(dateToLocator, "value");
+            return Common.GetAttributeValue(inputDateToLocator, "value");
         }
 
         public static void ClickServicesButton()
         {
-            Common.ClickElement(airportServicesLocator);
+            Common.ClickElement(buttonAirportServicesLocator);
         }
 
         public static void ClickCarRentalButton()
         {
-            Common.ClickElement(carRentalButtonLocator);
-        }
-
-        public static void ClickHertzButton()
-        {
-            Common.ClickElement(hertzButton);
+            Common.ClickElement(buttonCarRentalButtonLocator);
         }
 
         public static void ClickDirectionsButton()
         {
-            Common.ClickElement(directionsLocator);
+            Common.ClickElement(buttonDirectionsLocator);
         }
 
-        public static void SelectDropDownListIfIzolationIsRequired()
+        public static void SelectYesInDropdownIfIsolationIsRequired()
         {
-            Common.ClickElement(izolationLocator);
+            Common.ClickElement(optionIsolationYes);
         }
 
         public static void ClickFilterButton()
         {
-            Common.ClickElement(filterButtonLocator);
+            Common.ClickElement(buttonFilterLocator);
         }
 
         public static string AnswerMessage()
@@ -143,16 +98,11 @@ namespace Framework.Pages
         public static void ClickOnHertzButton()
         {
             
-            Common.ClickElement(hertzButton);
+            Common.ClickElement(buttonHertzLocator);
 
             string currentHandle = Common.GetCurrentWindowHandle();
-            Common.SwitchToNewUrlFromParentWindowByHandle(currentHandle);
+            Common.SwitchToNewWindowFromParentWindowByHandle(currentHandle);
             
-        }
-
-        public static string GetActualUrl()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -4,9 +4,6 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Framework.Pages
 {
@@ -20,11 +17,6 @@ namespace Framework.Pages
         internal static void ClickElement(string locator)
         {
             GetElement(locator).Click();
-        }
-
-        internal static void SendKeys(string locator, string keys)
-        {
-            GetElement(locator).SendKeys(keys);
         }
 
         internal static void WaitForElementToBeClickable(string locator)
@@ -49,43 +41,28 @@ namespace Framework.Pages
             GetElement(locator).Clear();
         }
 
-        public static string GetElementText(string locator)
+        internal static string GetElementText(string locator)
         {
             return GetElement(locator).Text;
         }
 
-        internal static List<IWebElement> GetElements(string locator)
+        private static List<IWebElement> GetElements(string locator)
         {
             return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
 
-        internal static void ClickMultipleElements(string locator)
+        internal static List<string> GetElementTextList(string locator)
         {
-            List<IWebElement> elements = GetElements(locator);
-
-            foreach (IWebElement element in elements)
-            {
-                return;
-            }
-        }
-
-        internal static string GetDateValue(string locator)
-        {
-            return GetElement(locator).Text;
-        }
-
-        internal static List<string> GetListElementText(string locator)
-        {
-            List<string> destinations = new List<string>();
+            List<string> textList = new List<string>();
 
             List<IWebElement> elements = GetElements(locator);
 
             foreach (IWebElement element in elements)
             {
-                destinations.Add(element.Text);
+                textList.Add(element.Text);
             }
 
-            return destinations;
+            return textList;
                                    
         }
 
@@ -104,7 +81,7 @@ namespace Framework.Pages
             return Driver.GetDriver().CurrentWindowHandle;
         }
 
-        internal static void SwitchToNewUrlFromParentWindowByHandle(string parentWindowHandle)
+        internal static void SwitchToNewWindowFromParentWindowByHandle(string parentWindowHandle)
         {
             List<string> handles = GetWindowHandles();
             foreach (string handle in handles)
@@ -128,5 +105,4 @@ namespace Framework.Pages
             wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
         }
     }
-
 }

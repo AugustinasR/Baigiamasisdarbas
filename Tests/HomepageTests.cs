@@ -1,76 +1,68 @@
 ﻿using Framework;
 using Framework.Pages;
 using NUnit.Framework;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
     internal class HomepageTests
     {
         [SetUp]
-       public void SetUp()
+        public void SetUp()
         {
             Driver.CreateDriver();
             Homepage.Open();
         }
 
         [Test]
-        public void TodaysDateTest() 
+        public void TodaysDate() 
         {
             DateTime today = DateTime.Today;
-
             string customFormatDate = "yyyy-MM-dd";
-            string formattedDate = today.ToString(customFormatDate);
+            string expectedDateFrom = today.ToString(customFormatDate);
 
-            string actualDate = Homepage.GetValueOfDate();
+            string actualDateFrom = Homepage.GetValueFromDate();
 
-            Assert.AreEqual(formattedDate, actualDate);
+            Assert.AreEqual(expectedDateFrom, actualDateFrom);
         }
 
         [Test]
-        public void DateToTest()
+        public void DateTo()
         {
             DateTime today = DateTime.Today;
             DateTime oneMonthFromToday = today.AddMonths(1).AddDays(-1);
             string customFormatDate = "yyyy-MM-dd";
-            string expectedResult = oneMonthFromToday.ToString(customFormatDate);
+            string expectedDateTo = oneMonthFromToday.ToString(customFormatDate);
 
-            string actualDateTo = Homepage.ValueToDate();
+            string actualDateTo = Homepage.GetValueToDate();
 
-            Assert.AreEqual(expectedResult, actualDateTo);
+            Assert.AreEqual(expectedDateTo, actualDateTo);
         }
 
         [Test]
-        public void SearchForFlightsFromTest()
+        public void SearchForFlightsFrom()
         {
-            string expectedValue = "Ryga RIX";
+            string expectedAirport = "Ryga RIX";
 
             Homepage.ClickOnTheSelectedFieldToEnterAirport();
-            Homepage.ClickOnEmptyFieldToEnter();
             Homepage.EnterAirportToTheSearch("rix");
             Homepage.ClickToConfirmAirport();
 
             Homepage.ClickSearchForFlights();
 
-            List<string> actualValue = Homepage.GetFlighSearchAnswers();
+            List<string> actualAirports = Homepage.GetFlighSearchAnswers();
 
-            foreach (string value in actualValue)
+            foreach (string actualAirport in actualAirports)
             {
-                Assert.AreEqual(expectedValue, value);
+                Assert.AreEqual(expectedAirport, actualAirport);
             }
         }
 
         [Test]
-        public void CarRentalTest()
+        public void CarRental()
         {
-            string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
+            string expectedUrl = "https://www.hertz.com/rentacar/reservation/";
 
             Homepage.ClickServicesButton();
             Homepage.ClickCarRentalButton();
@@ -78,21 +70,21 @@ namespace Tests
 
             string actualUrl = Driver.GetDriver().Url;
 
-            Assert.AreEqual(expectedurlValue, actualUrl);
+            Assert.AreEqual(expectedUrl, actualUrl);
         }
 
         [Test]
-        public void CovidRestrictionsTest()
+        public void CovidRestrictions()
         {
-            string expectedAnswer = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
+            string expectedMessage = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
 
             Homepage.ClickDirectionsButton();
-            Homepage.SelectDropDownListIfIzolationIsRequired();
+            Homepage.SelectYesInDropdownIfIsolationIsRequired();
             Homepage.ClickFilterButton();
 
-            string actualAnswer = Homepage.AnswerMessage();
+            string actualMessage = Homepage.AnswerMessage();
 
-            Assert.AreEqual(expectedAnswer, actualAnswer);
+            Assert.AreEqual(expectedMessage, actualMessage);
         }
 
         [TearDown]
