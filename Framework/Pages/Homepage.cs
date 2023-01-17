@@ -4,22 +4,22 @@ namespace Framework.Pages
 {
     public class Homepage
     {
-        public static string enterAirportNameLocator = "//*[@id='select2-arrival-select-container']";
-        public static string emptyFieldLocator = "//*[contains(@class,'select2-search__')]";
-        public static string confirmRIXLocator = "//li[contains(@class,'select2-results__option')]";
-        public static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
-        public static string dateFromLocator = "//*[@id='flights-widget-date-from']";
-        public static string dateToLocator = "//*[@id='flights-widget-date-to']";
-        public static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
-        public static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
-        public static string dateLocator = "//*[@id='flights-widget-date-from']";
-        public static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
-        public static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
-        public static string hertzButton = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
-        public static string directionsLocator = "//span[@class='btn btn-primary']";
-        public static string isolationYesOption = "//*[@id=\"isolate-in\"]/option[2]";
-        public static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
-        public static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
+        private static string enterAirportNameLocator = "//*[@id='select2-arrival-select-container']";
+        private static string emptyFieldLocator = "//*[contains(@class,'select2-search__')]";
+        private static string confirmRIXLocator = "//li[contains(@class,'select2-results__option')]";
+        private static string searchForFlightsLocator = "//*[@id='skrydziu-tvarkarastis']/div/form/div[3]/button";
+        private static string dateFromLocator = "//*[@id='flights-widget-date-from']";
+        private static string dateToLocator = "//*[@id='flights-widget-date-to']";
+        private static string searchAnswersLocator = "//*[@id='nav-tabContent']//table/tbody/tr/td[3]/span[1]";
+        private static string actualDate = "//*[@id=\"flights-widget-date-from\"]";
+        private static string dateLocator = "//*[@id='flights-widget-date-from']";
+        private static string airportServicesLocator = "//*[@id='navbar-bottom-content']/ul/li[2]/div/a";
+        private static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
+        private static string hertzButton = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
+        private static string directionsLocator = "//span[@class='btn btn-primary']";
+        private static string isolationYesOption = "//*[@id=\"isolate-in\"]/option[2]";
+        private static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
+        private static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
 
         public static void Open()
         {
