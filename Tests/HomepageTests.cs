@@ -43,7 +43,7 @@ namespace Tests
         [Test]
         public void SearchForFlightsFrom()
         {
-            string expectedValue = "Ryga RIX";
+            string expectedAirport = "Ryga RIX";
 
             Homepage.ClickOnTheSelectedFieldToEnterAirport();
             Homepage.EnterAirportToTheSearch("rix");
@@ -51,11 +51,11 @@ namespace Tests
 
             Homepage.ClickSearchForFlights();
 
-            List<string> actualValue = Homepage.GetFlighSearchAnswers();
+            List<string> actualAirports = Homepage.GetFlighSearchAnswers();
 
-            foreach (string value in actualValue)
+            foreach (string actualAirport in actualAirports)
             {
-                Assert.AreEqual(expectedValue, value);
+                Assert.AreEqual(expectedAirport, actualAirport);
             }
         }
 
