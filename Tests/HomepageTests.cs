@@ -22,7 +22,7 @@ namespace Tests
             string customFormatDate = "yyyy-MM-dd";
             string expectedDateFrom = today.ToString(customFormatDate);
 
-            string actualDateFrom = Homepage.GetValueOfDate();
+            string actualDateFrom = Homepage.GetValueFromDate();
 
             Assert.AreEqual(expectedDateFrom, actualDateFrom);
         }
@@ -35,7 +35,7 @@ namespace Tests
             string customFormatDate = "yyyy-MM-dd";
             string expectedDateTo = oneMonthFromToday.ToString(customFormatDate);
 
-            string actualDateTo = Homepage.ValueToDate();
+            string actualDateTo = Homepage.GetValueToDate();
 
             Assert.AreEqual(expectedDateTo, actualDateTo);
         }
