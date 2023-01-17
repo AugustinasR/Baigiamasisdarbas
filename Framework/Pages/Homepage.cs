@@ -18,13 +18,15 @@ namespace Framework.Pages
         private static string isolationYesOption = "//*[@id=\"isolate-in\"]/option[2]";
         private static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
         private static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
+        private static string cookiesDeclineLocator = "//*[@id='CybotCookiebotDialogBodyButtonDecline']";
+        private static string addPopupCloseLocator = "//*[@class='close-popup']";
+        private static string loadingSpinnerLocator = "//*[@class='loading-spinner']";
 
         public static void Open()
         {
             Driver.OpenPage("https://www.vilnius-airport.lt/");
-            Common.WaitAndClick("//*[@id='CybotCookiebotDialogBodyButtonDecline']");
-            Common.WaitAndClick("//*[@class='close-popup']");
-            //Common.WaitForElementToBeClickable("//*[@class='close-popup']");
+            Common.WaitAndClick(cookiesDeclineLocator);
+            Common.WaitAndClick(addPopupCloseLocator);
         }
 
         public static void ClickOnTheSelectedFieldToEnterAirport()
@@ -49,7 +51,7 @@ namespace Framework.Pages
 
         public static List<string> GetFlighSearchAnswers()
         {
-            Common.WaitForElementToBeInvisible("//*[@class='loading-spinner']");
+            Common.WaitForElementToBeInvisible(loadingSpinnerLocator);
             return Common.GetElementTextList(searchAnswersLocator);
         }
 
