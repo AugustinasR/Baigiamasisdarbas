@@ -146,7 +146,7 @@ namespace Framework.Pages
             Common.ClickElement(hertzButton);
 
             string currentHandle = Common.GetCurrentWindowHandle();
-            Common.SwitchToNewUrlFromParentWindowByHandle(currentHandle);
+            Common.SwitchToNewWindowFromParentWindowByHandle(currentHandle);
             
         }
 
