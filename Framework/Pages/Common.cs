@@ -49,12 +49,12 @@ namespace Framework.Pages
             GetElement(locator).Clear();
         }
 
-        public static string GetElementText(string locator)
+        internal static string GetElementText(string locator)
         {
             return GetElement(locator).Text;
         }
 
-        internal static List<IWebElement> GetElements(string locator)
+        private static List<IWebElement> GetElements(string locator)
         {
             return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
