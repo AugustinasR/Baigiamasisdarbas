@@ -9,7 +9,7 @@ namespace Tests
     internal class HomepageTests
     {
         [SetUp]
-       public void SetUp()
+        public void SetUp()
         {
             Driver.CreateDriver();
             Homepage.Open();
@@ -19,13 +19,12 @@ namespace Tests
         public void TodaysDate() 
         {
             DateTime today = DateTime.Today;
-
             string customFormatDate = "yyyy-MM-dd";
-            string formattedDate = today.ToString(customFormatDate);
+            string expectedDateFrom = today.ToString(customFormatDate);
 
-            string actualDate = Homepage.GetValueOfDate();
+            string actualDateFrom = Homepage.GetValueOfDate();
 
-            Assert.AreEqual(formattedDate, actualDate);
+            Assert.AreEqual(expectedDateFrom, actualDateFrom);
         }
 
         [Test]
@@ -34,11 +33,11 @@ namespace Tests
             DateTime today = DateTime.Today;
             DateTime oneMonthFromToday = today.AddMonths(1).AddDays(-1);
             string customFormatDate = "yyyy-MM-dd";
-            string expectedResult = oneMonthFromToday.ToString(customFormatDate);
+            string expectedDateTo = oneMonthFromToday.ToString(customFormatDate);
 
             string actualDateTo = Homepage.ValueToDate();
 
-            Assert.AreEqual(expectedResult, actualDateTo);
+            Assert.AreEqual(expectedDateTo, actualDateTo);
         }
 
         [Test]
@@ -64,7 +63,7 @@ namespace Tests
         [Test]
         public void CarRental()
         {
-            string expectedurlValue = "https://www.hertz.com/rentacar/reservation/";
+            string expectedUrl = "https://www.hertz.com/rentacar/reservation/";
 
             Homepage.ClickServicesButton();
             Homepage.ClickCarRentalButton();
@@ -72,21 +71,21 @@ namespace Tests
 
             string actualUrl = Driver.GetDriver().Url;
 
-            Assert.AreEqual(expectedurlValue, actualUrl);
+            Assert.AreEqual(expectedUrl, actualUrl);
         }
 
         [Test]
         public void CovidRestrictions()
         {
-            string expectedAnswer = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
+            string expectedMessage = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
 
             Homepage.ClickDirectionsButton();
             Homepage.SelectDropDownListIfIzolationIsRequired();
             Homepage.ClickFilterButton();
 
-            string actualAnswer = Homepage.AnswerMessage();
+            string actualMessage = Homepage.AnswerMessage();
 
-            Assert.AreEqual(expectedAnswer, actualAnswer);
+            Assert.AreEqual(expectedMessage, actualMessage);
         }
 
         [TearDown]
