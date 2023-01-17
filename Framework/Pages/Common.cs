@@ -22,11 +22,6 @@ namespace Framework.Pages
             GetElement(locator).Click();
         }
 
-        internal static void SendKeys(string locator, string keys)
-        {
-            GetElement(locator).SendKeys(keys);
-        }
-
         internal static void WaitForElementToBeClickable(string locator)
         {
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
@@ -62,21 +57,6 @@ namespace Framework.Pages
         internal static List<string> GetElementTextList(string locator)
         {
             List<string> textList = new List<string>();
-
-            foreach (IWebElement element in elements)
-            {
-                return;
-            }
-        }
-
-        internal static string GetDateValue(string locator)
-        {
-            return GetElement(locator).Text;
-        }
-
-        internal static List<string> GetListElementText(string locator)
-        {
-            List<string> destinations = new List<string>();
 
             List<IWebElement> elements = GetElements(locator);
 
