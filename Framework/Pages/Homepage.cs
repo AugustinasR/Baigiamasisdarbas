@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 
 namespace Framework.Pages
 {
@@ -44,11 +39,6 @@ namespace Framework.Pages
             Common.SendKeysToElement(emptyFieldLocator, name);
         }
 
-        public static void ClickOnEmptyFieldToEnter()
-        {
-            Common.ClickElement(emptyFieldLocator);
-        }
-
         public static void ClickToConfirmAirport()
         {
             Common.ClickElement(confirmRIXLocator);
@@ -57,36 +47,6 @@ namespace Framework.Pages
         public static void ClickSearchForFlights()
         {
             Common.ClickElement(searchForFlightsLocator);
-        }
-
-        public static void ClickDateFrom()
-        {
-            Common.ClickElement(dateFromLocator);
-        }
-
-        public static void EnterDateFrom(string dateFrom)
-        {
-            Common.SendKeysToElement(dateFromLocator, dateFrom);
-        }
-
-        public static void ClickDateTo()
-        {
-            Common.ClickElement(dateToLocator);
-        }
-
-        public static void EnterDateTo(string dateTo)
-        {
-            Common.SendKeysToElement(dateToLocator, dateTo);
-        }
-
-        public static void ClearDateFrom()
-        {
-           Common.ClearInputElement(dateFromLocator);
-        }
-
-        public static void ClearDateTo()
-        {
-            Common.ClearInputElement(dateToLocator); 
         }
 
         public static List<string> GetFlighSearchAnswers()
@@ -113,11 +73,6 @@ namespace Framework.Pages
         public static void ClickCarRentalButton()
         {
             Common.ClickElement(carRentalButtonLocator);
-        }
-
-        public static void ClickHertzButton()
-        {
-            Common.ClickElement(hertzButton);
         }
 
         public static void ClickDirectionsButton()
@@ -148,11 +103,6 @@ namespace Framework.Pages
             string currentHandle = Common.GetCurrentWindowHandle();
             Common.SwitchToNewWindowFromParentWindowByHandle(currentHandle);
             
-        }
-
-        public static string GetActualUrl()
-        {
-            throw new NotImplementedException();
         }
     }
 }
