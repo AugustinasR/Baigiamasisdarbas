@@ -79,7 +79,7 @@ namespace Tests
             string expectedMessage = "Atvykstant į Lietuvą nebetaikomi jokie COVID-19 reikalavimai";
 
             Homepage.ClickDirectionsButton();
-            Homepage.SelectDropDownListIfIzolationIsRequired();
+            Homepage.SelectYesInDropdownIfIsolationIsRequired();
             Homepage.ClickFilterButton();
 
             string actualMessage = Homepage.AnswerMessage();

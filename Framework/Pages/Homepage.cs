@@ -22,7 +22,7 @@ namespace Framework.Pages
         public static string carRentalButtonLocator = "//a[@title='Automobilių nuoma']";
         public static string hertzButton = "//a[@href='https://www.hertz.com/rentacar/reservation/']";
         public static string directionsLocator = "//span[@class='btn btn-primary']";
-        public static string izolationLocator = "//*[@id=\"isolate-in\"]/option[2]";
+        public static string isolationYesOption = "//*[@id=\"isolate-in\"]/option[2]";
         public static string filterButtonLocator = "//*[@id='directions-filters']/form/div[8]/input";
         public static string answerLocator = "//*[@id='page-iframe']/div/div[6]";
 
@@ -125,9 +125,9 @@ namespace Framework.Pages
             Common.ClickElement(directionsLocator);
         }
 
-        public static void SelectDropDownListIfIzolationIsRequired()
+        public static void SelectYesInDropdownIfIsolationIsRequired()
         {
-            Common.ClickElement(izolationLocator);
+            Common.ClickElement(isolationYesOption);
         }
 
         public static void ClickFilterButton()
