@@ -46,7 +46,6 @@ namespace Tests
             string expectedValue = "Ryga RIX";
 
             Homepage.ClickOnTheSelectedFieldToEnterAirport();
-            Homepage.ClickOnEmptyFieldToEnter();
             Homepage.EnterAirportToTheSearch("rix");
             Homepage.ClickToConfirmAirport();
 
