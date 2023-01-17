@@ -59,9 +59,9 @@ namespace Framework.Pages
             return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
 
-        internal static void ClickMultipleElements(string locator)
+        internal static List<string> GetElementTextList(string locator)
         {
-            List<IWebElement> elements = GetElements(locator);
+            List<string> textList = new List<string>();
 
             foreach (IWebElement element in elements)
             {
@@ -82,10 +82,10 @@ namespace Framework.Pages
 
             foreach (IWebElement element in elements)
             {
-                destinations.Add(element.Text);
+                textList.Add(element.Text);
             }
 
-            return destinations;
+            return textList;
                                    
         }
 
@@ -104,7 +104,7 @@ namespace Framework.Pages
             return Driver.GetDriver().CurrentWindowHandle;
         }
 
-        internal static void SwitchToNewUrlFromParentWindowByHandle(string parentWindowHandle)
+        internal static void SwitchToNewWindowFromParentWindowByHandle(string parentWindowHandle)
         {
             List<string> handles = GetWindowHandles();
             foreach (string handle in handles)

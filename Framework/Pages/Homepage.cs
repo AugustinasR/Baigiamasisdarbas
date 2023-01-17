@@ -92,7 +92,7 @@ namespace Framework.Pages
         public static List<string> GetFlighSearchAnswers()
         {
             Common.WaitForElementToBeInvisible("//*[@class='loading-spinner']");
-            return Common.GetListElementText(searchAnswersLocator);
+            return Common.GetElementTextList(searchAnswersLocator);
         }
 
         public static string GetValueOfDate()
